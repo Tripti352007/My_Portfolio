@@ -252,7 +252,7 @@ footer .cp{max-width:1200px;margin:34px auto 0;padding-top:20px;border-top:1px s
 <script>
 try{if(matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.dataset.theme='light'}catch(_){}
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const IM={"dance":"assets/images/dance.jpg","me":"assets/images/me.jpg","haryatra":"assets/images/haryatra.jpg","sahayta":"assets/images/sahayta.jpg","cravecare":"assets/images/cravecare.jpg","azurequeue-ai":"assets/images/azurequeue-ai.jpg","safora-ai":"assets/images/safora-ai.jpg","yoga":"assets/images/yoga.jpg","nss":"assets/images/nss.png","plant":"assets/images/plant.jpg","team":"assets/images/team.jpg"};
+const IM={"dance":"dance.jpg","me":"me.jpg","haryatra":"haryatra.jpg","sahayta":"sahayta.jpg","cravecare":"cravecare.jpg","azurequeue-ai":"azurequeue-ai.jpg","safora-ai":"safora-ai.jpg","yoga":"yoga.jpg","nss":"nss.png","plant":"plant.jpg","team":"team.jpg"};
 const IMG=n=>IM[n];
 document.querySelectorAll("[data-k]").forEach(i=>i.src=IM[i.dataset.k]);
 const P=[["Safora AI","Personal safety","An AI-powered personal safety idea.","safora-ai"],["CraveCare","Food discovery","A food discovery experience built around what people crave.","cravecare"],["AzureQueue AI","Bank queue","Smarter bank queue management (earlier version in PHP/MySQL).","azurequeue-ai"],["Sahayta","Volunteering","A platform that connects volunteers with people who need help.","sahayta"],["HarYatra","Public transport","A proposed integrated platform for the Haryana Roadways ecosystem. No seat reservation.","haryatra"]];
