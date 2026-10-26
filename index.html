@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tripti.dev — Tripti Garg | CSE Student &amp; AI-Assisted Project Builder</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0e27;--bg2:#121739;--ink:#f7f3e8;--mut:#b9bdd6;--gold:#ffc83d;--gt:#ffc83d;--vi:#8b7bff;--mint:#5eead4;--co:#ff7a59;--line:rgba(247,243,232,.16);--card:rgba(18,23,57,.78)}
+[data-theme=light]{--bg:#fffaf0;--bg2:#ffffff;--ink:#12142e;--mut:#4a4d6e;--gold:#ffc83d;--gt:#8a5d00;--vi:#4b3be0;--mint:#0c8f7f;--co:#d9432a;--line:rgba(18,20,46,.18);--card:rgba(255,255,255,.88)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:auto}
+body{background:var(--bg);color:var(--ink);font:400 17px/1.65 Inter,system-ui,sans-serif;transition:background .4s,color .4s;overflow-x:hidden}
+h1,h2,h3,.dg{font-family:'Space Grotesk',sans-serif;letter-spacing:-.03em}
+a{color:inherit}
+#gl{position:fixed;inset:0;z-index:0;pointer-events:none}
+#cf{position:fixed;inset:0;z-index:300;pointer-events:none}
+#app{position:relative;z-index:2}
+.bar{padding-top:calc(18px + env(safe-area-inset-top,0px))!important;background:linear-gradient(var(--bg),transparent);backdrop-filter:blur(6px);position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:18px 5vw;mix-blend-mode:normal}
+.logo{font:700 1.35rem 'Space Grotesk';text-decoration:none;cursor:pointer}.logo b{color:var(--gt)}
+.bar .r{display:flex;gap:10px;align-items:center}
+.pill{background:var(--card);backdrop-filter:blur(10px);border:1px solid var(--line);color:var(--ink);padding:9px 20px;border-radius:99px;font:600 14px 'Space Grotesk';cursor:pointer;transition:.25s}
+.pill:hover{background:var(--gold);color:#0a0e27;border-color:var(--gold)}
+#menu{position:fixed;inset:0;z-index:90;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:0 8vw;clip-path:circle(0 at 95% 5%);transition:clip-path .8s cubic-bezier(.7,0,.2,1);pointer-events:none}
+#menu.on{clip-path:circle(150% at 95% 5%);pointer-events:auto}
+#menu a{display:flex;align-items:baseline;gap:22px;font:700 clamp(1.9rem,min(8vw,9vh),6rem)/1.05 'Space Grotesk';text-decoration:none;padding:6px 0;border-bottom:1px solid var(--line);transition:.3s;cursor:pointer}
+#menu a small{font:500 .9rem Inter;color:var(--mut);margin-left:auto;text-align:right}
+#menu a:hover{color:var(--gt);padding-left:30px}
+.pg{display:none;min-height:100vh;overflow-x:clip}.pg.on{display:block}
+.w{max-width:1200px;margin:auto;padding:0 6vw}
+.hero{min-height:100vh;display:flex;align-items:center}
+.hero .w{width:100%}@media(max-width:800px){.hero{align-items:flex-start;padding-top:120px}.hero .w{margin:0 auto}}.hero .t{max-width:600px}
+.tag{display:inline-block;font:600 13px 'Space Grotesk';letter-spacing:.12em;text-transform:uppercase;color:var(--gt);border:1px solid var(--gold);padding:7px 16px;border-radius:99px}
+h1{font-size:clamp(3rem,7.4vw,6.4rem);line-height:.92;margin:22px 0 24px}
+h1 em{font-style:normal;color:var(--gt)}
+.sub{color:var(--mut);font-size:1.2rem;max-width:540px}
+.row{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.btn{font:700 16px 'Space Grotesk';padding:15px 30px;border-radius:99px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none;transition:.3s;display:inline-block}
+.btn.g{background:var(--gold);border-color:var(--gold);color:#0a0e27}
+.btn:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:0 12px 0 -6px var(--vi)}
+.scroll{position:absolute;bottom:26px;left:6vw;color:var(--mut);font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+section.s{padding:110px 0}
+h2{font-size:clamp(2.4rem,6vw,5rem);line-height:1;margin-bottom:18px}
+h2 em{font-style:normal;color:var(--gt)}
+.lead{color:var(--mut);max-width:680px;margin-bottom:44px;font-size:1.1rem}
+.strip{overflow:hidden;background:var(--gold);color:#0a0e27;padding:16px 0;transform:rotate(-1.6deg);margin:30px -3vw}
+.strip div{display:flex;gap:48px;width:max-content;white-space:nowrap;animation:mq 26s linear infinite;font:700 1.7rem 'Space Grotesk'}
+@keyframes mq{to{transform:translateX(-50%)}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px;perspective:1200px}
+.card{position:relative;background:var(--card);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:24px;padding:28px;transform-style:preserve-3d;transition:transform .15s,box-shadow .3s,border-color .3s;overflow:hidden}
+.card:hover{border-color:var(--gold);box-shadow:0 28px 60px rgba(0,0,0,.35)}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--x,50%) var(--y,50%),rgba(255,200,61,.22),transparent 55%);opacity:0;transition:.3s;pointer-events:none}
+.card:hover::after{opacity:1}.card>*{transform:translateZ(28px)}
+.card h3{font-size:1.6rem;margin-bottom:8px}.card p{color:var(--mut);font-size:15.5px}
+.num{font:700 .95rem 'Space Grotesk';color:var(--gt);margin-bottom:10px}
+.shot{height:auto;aspect-ratio:16/10;border-radius:14px;margin-bottom:18px;background:linear-gradient(135deg,var(--vi),var(--gold));display:grid;place-items:center;font:700 2.4rem 'Space Grotesk';color:#0a0e27;overflow:hidden}
+.shot img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .5s}.card:hover .shot img{transform:scale(1.06)}
+.chip{display:inline-block;margin:14px 8px 0 0;padding:4px 13px;border-radius:99px;border:1px solid var(--mint);color:var(--mint);font-size:13px;font-weight:600}
+.idx a{display:flex;align-items:center;gap:20px;padding:22px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:.3s;cursor:pointer}
+.idx a:hover{padding-left:26px;color:var(--gt)}
+.idx b{font:700 clamp(1.6rem,4vw,3rem) 'Space Grotesk'}.idx span{margin-left:auto;color:var(--mut);font-size:15px}
+.two{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:center}
+.photo{aspect-ratio:4/5;border-radius:30px;background:linear-gradient(135deg,var(--gold),var(--vi));display:grid;place-items:center;font:700 6rem 'Space Grotesk';color:#0a0e27;overflow:hidden;box-shadow:18px 18px 0 var(--vi);transform:rotate(-2deg)}
+.photo img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.tl{border-left:2px solid var(--gold);padding-left:26px;margin-left:8px}.tl div{margin-bottom:28px;position:relative}
+.tl div::before{content:"";position:absolute;left:-35px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--gold)}
+.tl b{font:700 1.2rem 'Space Grotesk'}.tl p{color:var(--mut);font-size:15px}
+.form{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+.form input,.form textarea{flex:1;min-width:230px;padding:16px 22px;border-radius:18px;border:2px solid var(--line);background:var(--card);color:var(--ink);font:500 16px Inter}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--gold)}
+.big{font:700 clamp(1.8rem,5vw,4rem) 'Space Grotesk';text-decoration:none;color:var(--gt);word-break:break-all}
+.legal h3{margin:30px 0 8px;font-size:1.4rem}.legal p{color:var(--mut)}
+footer{position:relative;z-index:2;background:var(--bg2);border-top:1px solid var(--line);padding:60px 6vw 30px}
+footer .cols{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px}
+footer h4{font:700 1rem 'Space Grotesk';color:var(--gt);margin-bottom:12px;letter-spacing:.1em;text-transform:uppercase}
+footer a,footer p{display:block;color:var(--mut);font-size:15px;text-decoration:none;margin-bottom:6px;cursor:pointer}footer a:hover{color:var(--gt)}
+footer .cp{max-width:1200px;margin:34px auto 0;padding-top:20px;border-top:1px solid var(--line);color:var(--mut);font-size:14px}
+.rv{opacity:0;transform:translateY(60px);transition:1s cubic-bezier(.2,.8,.2,1)}.rv.on{opacity:1;transform:none}
+#tr{position:fixed;z-index:250;left:0;top:0;width:60px;height:60px;border-radius:50%;background:var(--gold);transform:scale(0);pointer-events:none;display:grid;place-items:center}
+#tr svg{width:110px;height:110px;position:fixed;left:50%;top:50%;margin:-55px 0 0 -55px;opacity:0}
+#tr path{stroke:#0a0e27;stroke-width:5;fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:start}
+.avail{display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border:1px solid var(--mint);color:var(--mint);border-radius:99px;font-weight:600;font-size:14px;margin-bottom:22px}
+.avail i{width:10px;height:10px;border-radius:50%;background:var(--mint);animation:pl 1.6s infinite}@keyframes pl{50%{opacity:.25;transform:scale(1.6)}}
+.cl small,.cl2 small{display:block;color:var(--mut);letter-spacing:.14em;text-transform:uppercase;font-size:12px;margin-bottom:6px}
+.cl .big{display:block;font-size:clamp(1.3rem,2.6vw,2rem);margin-bottom:18px}
+.cl2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px;perspective:1000px}
+.cl2 .card{padding:20px;text-decoration:none;color:var(--ink)}.cl2 b{font:700 1.05rem 'Space Grotesk';word-break:break-all}
+.fc h3{font-size:1.8rem;margin-bottom:16px}.fc label{display:block;font:600 14px 'Space Grotesk';margin-bottom:14px;color:var(--mut)}
+.fc input,.fc textarea{display:block;width:100%;margin-top:6px;padding:14px 18px;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--ink);font:500 16px Inter;resize:vertical}
+.fc input:focus,.fc textarea:focus{outline:none;border-color:var(--gold)}.fc .bad{border-color:var(--co)!important}
+#st{margin-top:14px;font-weight:600;min-height:24px}#st.ok{color:var(--mint)}#st.err{color:var(--co)}
+#pv{position:fixed;z-index:120;width:300px;height:190px;border-radius:16px;background:var(--bg2) center/cover;border:2px solid var(--gold);pointer-events:none;opacity:0;transform:scale(.8) rotate(-4deg);transition:opacity .25s,transform .25s;box-shadow:0 20px 50px rgba(0,0,0,.4)}
+#pv.on{opacity:1;transform:scale(1) rotate(-4deg)}
+@media(max-width:800px){.cg{grid-template-columns:1fr}.cl2{grid-template-columns:1fr}#pv{display:none}}
+.tz{display:block;text-decoration:none;padding:36px 40px;border:2px solid var(--gold);border-radius:28px;background:var(--card);cursor:pointer;transition:.35s}
+.tz:hover{transform:translateY(-6px) rotate(-.6deg);box-shadow:12px 12px 0 var(--vi)}
+.tz small{display:block;color:var(--gt);text-transform:uppercase;letter-spacing:.14em;font-weight:600;font-size:13px}
+.tz b{display:block;font:700 clamp(1.6rem,4.5vw,3.4rem)/1.1 'Space Grotesk';margin:8px 0}.tz span{color:var(--mut);font-weight:600}
+.st{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}.st .card{text-align:center}.sv{display:block;font:700 clamp(2.2rem,5vw,3.6rem) 'Space Grotesk';color:var(--gt);line-height:1.1}
+.story{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center;margin:90px 0}.story.rev{grid-template-columns:1.1fr .9fr}.story.rev .vis{order:2}
+.story h3{font-size:clamp(2.4rem,6vw,4.4rem);margin:6px 0 14px}.story p{color:var(--mut);font-size:1.1rem}
+.kk{color:var(--gt);font:600 14px 'Space Grotesk';letter-spacing:.14em;text-transform:uppercase}
+.vis{aspect-ratio:1;display:grid;place-items:center;max-width:380px;margin:auto;width:100%;background:radial-gradient(circle at 30% 25%,rgba(255,200,61,.3),transparent 60%),var(--card)}
+.vis em{font-style:normal;font-size:clamp(5rem,14vw,8rem);animation:fl 5s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-16px)}}
+.ring{position:absolute;width:84%;height:84%;border:3px dashed var(--gold);border-radius:50%;animation:rot 22s linear infinite}
+@keyframes rot{to{transform:rotate(360deg)}}
+.rv.l:not(.on){transform:translateX(-90px)}.rv.r:not(.on){transform:translateX(90px)}
+@media(max-width:800px){.story,.story.rev{grid-template-columns:1fr;gap:30px;margin:60px 0}.story.rev .vis{order:0}.tz{padding:26px}}
+.vis{position:relative;overflow:hidden}.vis img.vi{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}.vis:hover img.vi{transform:scale(1.08)}.vis img.lg{position:absolute;right:16px;bottom:16px;width:30%;max-width:100px;aspect-ratio:1;border-radius:50%;border:4px solid #fff;box-shadow:0 8px 24px rgba(0,0,0,.35);background:#fff}
+.sg{grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
+.svc{padding:38px 34px 34px;min-height:300px;display:flex;flex-direction:column}
+.svc .no{font:600 .95rem 'Space Grotesk';letter-spacing:.08em;color:var(--gt)}
+.svc .ic{font-size:2.5rem;margin:14px 0 8px;transition:transform .4s}.svc:hover .ic{transform:scale(1.2) rotate(-8deg)}
+.svc h3{font-size:clamp(1.8rem,3vw,2.4rem);margin-bottom:12px}.svc p{font-size:16px}
+.svc .go{margin-top:auto;padding-top:22px;font:700 15px 'Space Grotesk';text-decoration:none;color:var(--gt)}
+.svc::before{content:"";position:absolute;left:0;bottom:0;height:5px;width:0;background:linear-gradient(90deg,var(--gold),var(--vi));transition:width .5s;z-index:2}.svc:hover::before{width:100%}
+#menu{overflow-y:auto;padding-top:80px;padding-bottom:30px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+@media(max-width:800px){.two{grid-template-columns:1fr}.idx span{display:none}}
+</style></head><body>
+<canvas id="gl"></canvas><canvas id="cf"></canvas>
+<div id="tr"><svg viewBox="0 0 50 50"><path d="M12 26 L22 35 L39 15"/></svg></div>
+<div class="bar"><a href="#home" class="logo" data-go="home">Tripti<b>.dev</b></a>
+<div class="r"><button class="pill" id="th">◐ Theme</button><button class="pill" id="mb">Menu</button></div></div>
+<div id="pv"></div>
+<div id="menu">
+<a href="#home" data-go="home">Home<small>Start here</small></a><a href="#about" data-go="about">About<small>Education · NSS · Yoga · Dance</small></a>
+<a href="#projects" data-go="projects">Projects<small>Safora · CraveCare · AzureQueue · Sahayta · HarYatra</small></a>
+<a href="#services" data-go="services">Services<small>Websites · Landing pages · Portfolios · UI fixes</small></a>
+<a href="#beyond" data-go="beyond">Beyond Tech<small>NSS · Yoga · Dance · Teamwork</small></a>
+<a href="#contact" data-go="contact">Contact<small>Say hello</small></a></div>
+
+<div id="app">
+<!-- HOME -->
+<div class="pg on" id="home">
+<div class="hero"><div class="w"><div class="t">
+<span class="tag">CSE Student · AI-Assisted Builder · Hackathon Participant</span>
+<h1>Hi, I'm <em>Tripti</em> Garg.</h1>
+<p class="sub">I turn ideas into working projects with AI as my creative partner, using C, Java and the web to bring them to life.</p>
+<div class="row"><a href="#projects" class="btn g" data-go="projects">View my work</a><a href="#contact" class="btn" data-go="contact">Let's talk</a></div></div></div>
+<div class="scroll">Scroll — the shape rotates ↓</div></div>
+<div class="strip"><div id="mq"></div></div>
+<section class="s"><div class="w"><h2 class="rv">Featured <em>projects</em></h2><p class="lead rv">Ideas I've designed and built with prompts, AI tools and a lot of learning.</p><div class="idx rv" id="idx"></div></div></section>
+<section class="s"><div class="w"><h2 class="rv">Hackathons &amp; <em>wins</em></h2><p class="lead rv">Competing is how I learn fastest.</p><div class="grid" id="wg"></div></div></section>
+<section class="s"><div class="w"><a href="#services" class="tz rv" data-go="services"><small>Services</small><b>Websites built with clarity and style</b><span>Development · Landing pages · Portfolios · UI fixes →</span></a></div></section>
+<section class="s" style="padding-top:0"><div class="w"><a href="#beyond" class="tz rv" data-go="beyond"><small>Beyond technology</small><b>The person behind the code</b><span>NSS · Yoga · Dance · Teamwork →</span></a></div></section>
+</div>
+
+<!-- ABOUT -->
+<div class="pg" id="about"><section class="s" style="padding-top:140px"><div class="w">
+<div class="two"><div class="photo rv"><img data-k="me" alt="Tripti Garg" onerror="var q=this.parentNode;this.remove();q.append('T')"></div>
+<div class="rv"><span class="tag">About me</span><h2 style="margin-top:18px">Curious by nature,<br><em>builder</em> by habit.</h2>
+<p class="lead" style="margin-bottom:14px">I'm Tripti Garg, a B.Tech Computer Science Engineering student at Maharishi Markandeshwar (Deemed to be University), MM(DU), Mullana, Ambala, Haryana (2025–2029).</p>
+<p style="color:var(--mut)">I work with C, Java and HTML/CSS, and I use AI-assisted development to turn ideas into real projects. I'm active in teams, good at problem-solving, and always up for a new challenge.</p></div></div></div>
+<div class="w" style="margin-top:100px"><h2 class="rv"><em>Education</em></h2><div class="tl rv" style="margin-top:34px">
+<div><b>B.Tech CSE — MM(DU), Mullana</b><p>2025–2029 · GDG on Campus MM(DU)</p></div>
+<div><b>Class XII — The Milestone Sr. Sec. School, Kaithal</b><p>2024</p></div>
+<div><b>Class X — The Aryan International School, Kaithal</b></div>
+</div></div>
+<div class="w" style="margin-top:80px"><a href="#beyond" class="tz rv" data-go="beyond"><small>Beyond technology</small><b>NSS · Yoga · Dance · Teamwork</b><span>Explore the full story →</span></a></div>
+</section></div>
+
+<!-- PROJECTS -->
+<div class="pg" id="projects"><section class="s" style="padding-top:140px"><div class="w">
+<span class="tag">Projects</span><h2 style="margin-top:18px">Things I've <em>built</em>.</h2><p class="lead">Tilt a card. Each one started as a problem I wanted to solve.</p><div class="grid" id="pg"></div></div></section></div>
+
+<!-- SERVICES -->
+<div class="pg" id="services"><section class="s" style="padding-top:140px"><div class="w">
+<span class="tag">Services</span>
+<h2 class="rv" style="margin-top:18px;font-size:clamp(2.6rem,7.4vw,6rem)">Websites that show<br>your work <em>beautifully</em>.</h2>
+<p class="lead rv">I design and build clean, responsive websites for individuals, creators, and businesses who want their work presented with clarity and style.</p>
+<div class="grid sg">
+<div class="card svc rv"><span class="no">01</span><div class="ic">🌐</div><h3>Website Development</h3><p>Multi-section websites built to present your work clearly. Fast-loading, responsive on every screen, structured so visitors find what they need effortlessly.</p><a href="#contact" class="go" data-go="contact">Start a project →</a></div>
+<div class="card svc rv"><span class="no">02</span><div class="ic">🚀</div><h3>Landing Pages</h3><p>Focused single pages designed around a specific goal — introducing a product, launching a project, or driving inquiries with clean typography and purposeful layout.</p><a href="#contact" class="go" data-go="contact">Start a project →</a></div>
+<div class="card svc rv"><span class="no">03</span><div class="ic">🎨</div><h3>Portfolio Websites</h3><p>Clean, distinctive digital spaces for developers, creators, and professionals to highlight their work and achievements memorably.</p><a href="#contact" class="go" data-go="contact">Start a project →</a></div>
+<div class="card svc rv"><span class="no">04</span><div class="ic">🛠️</div><h3>UI &amp; Responsive Fixes</h3><p>Auditing and upgrading existing websites to improve mobile responsiveness, clean up visual hierarchy, and make layouts feel modern and polished.</p><a href="#contact" class="go" data-go="contact">Start a project →</a></div>
+</div></div>
+<div class="strip"><div id="mq3"></div></div>
+<div class="w"><h2 class="rv">How it <em>works</em></h2><div class="grid" style="margin-top:30px">
+<div class="card rv"><div class="num">STEP 1</div><h3>Share your idea</h3><p>Tell me about your work, your goal and who the site is for.</p></div>
+<div class="card rv"><div class="num">STEP 2</div><h3>Design &amp; build</h3><p>I turn it into a clean, responsive site, with your feedback along the way.</p></div>
+<div class="card rv"><div class="num">STEP 3</div><h3>Launch &amp; polish</h3><p>We go live, then fine-tune the details until it feels right.</p></div></div>
+<div class="row" style="justify-content:center;margin-top:70px"><a href="#contact" class="btn g" data-go="contact">Let's work together</a><a href="#projects" class="btn" data-go="projects">See my projects</a></div></div>
+</section></div>
+
+<!-- BEYOND -->
+<div class="pg" id="beyond"><section class="s" style="padding-top:140px"><div class="w">
+<span class="tag">Beyond technology</span>
+<h2 class="rv" style="margin-top:18px;font-size:clamp(2.8rem,8vw,6.4rem)">More than<br>lines of <em>code</em>.</h2>
+<p class="lead rv">Service, movement, stage and team. These are the things that keep me balanced, curious and ready to build.</p>
+<div class="grid st">
+<div class="card rv"><b class="sv"><span class="cnt" data-n="7">0</span></b><p>day NSS camp</p></div>
+<div class="card rv"><b class="sv">District</b><p>level cleared in yoga</p></div>
+<div class="card rv"><b class="sv">State</b><p>level participation</p></div>
+<div class="card rv"><b class="sv"><span class="cnt" data-n="2">0</span>nd</b><p>place, Universum national group dance</p></div></div></div>
+<div class="strip"><div id="mq2"></div></div>
+<div class="w">
+<div class="story"><div class="card vis rv l"><img class="vi" data-k="plant" alt="Planting a sapling" style="object-position:55% center"><img class="lg" data-k="nss" alt="National Service Scheme logo"></div><div class="rv r"><small class="kk">01 — Service</small><h3>NSS</h3><p>I took part in many NSS activities: a one-day camp, a seven-day camp, tree plantation and cleanliness drives. Showing up for a community teaches you what real problems look like.</p><span class="chip">1-day camp</span><span class="chip">7-day camp</span><span class="chip">Tree plantation</span><span class="chip">Cleanliness drives</span></div></div>
+<div class="story rev"><div class="card vis rv r"><img class="vi" data-k="yoga" alt="Yoga at sunrise"></div><div class="rv l"><small class="kk">02 — Movement</small><h3>Yoga</h3><p>I started yoga at 14–15 and cleared district level, then took part at state level. It trained focus and patience, which turn out to be useful when code refuses to work.</p><span class="chip">District level</span><span class="chip">State participation</span></div></div>
+<div class="story"><div class="card vis rv l"><img class="vi" data-k="dance" alt="Tripti performing a folk dance" style="object-position:center 35%"></div><div class="rv r"><small class="kk">03 — Stage</small><h3>Dance</h3><p>From school function stages to Universum, a national inter-university competition, where our group won second position. Performing in a group is a lesson in timing and trust.</p><span class="chip">School functions</span><span class="chip">Universum · 2nd</span></div></div>
+<div class="story rev"><div class="card vis rv r"><img class="vi" data-k="team" alt="Teamwork, hands together"></div><div class="rv l"><small class="kk">04 — Together</small><h3>Teamwork</h3><p>I'm active in teams and enjoy solving problems together, from hackathons to campus life with GDG on Campus MM(DU).</p><span class="chip">Hackathons</span><span class="chip">GDG on Campus MM(DU)</span></div></div>
+</div>
+<div class="w" style="margin-top:70px"><h2 class="rv">What it brings to <em>my work</em></h2><div class="grid" style="margin-top:30px">
+<div class="card rv"><h3>Discipline</h3><p>Regular practice, in yoga and in code.</p></div>
+<div class="card rv"><h3>Empathy</h3><p>Building for people starts with understanding them.</p></div>
+<div class="card rv"><h3>Collaboration</h3><p>The best ideas get sharper in a team.</p></div></div>
+<div class="row" style="justify-content:center;margin-top:70px"><a href="#contact" class="btn g" data-go="contact">Let's build together</a><a href="#projects" class="btn" data-go="projects">See my projects</a></div></div>
+</section></div>
+
+<!-- CONTACT -->
+<div class="pg" id="contact"><section class="s" style="padding-top:140px"><div class="w">
+<span class="tag">Contact</span><h2 style="margin-top:18px">Let's build<br>something <em>together</em>.</h2>
+<p class="lead">Hackathon team, project idea or feedback — I'd love to hear from you.</p>
+<div class="cg">
+<div class="cl-wrap"><div class="avail"><i></i> Open to hackathons, collaborations &amp; learning opportunities</div>
+<div class="cl card rv"><small>Email</small><a class="big" href="mailto:gargtripti88@gmail.com">gargtripti88@gmail.com</a><button class="btn" id="cpy">Copy email</button></div>
+<div class="cl2">
+<a class="card rv" target="_blank" rel="noopener" href="https://www.linkedin.com/in/tripti-g7/"><small>LinkedIn</small><b>tripti-g7 ↗</b></a>
+<a class="card rv" target="_blank" rel="noopener" href="https://github.com/Tripti352007"><small>GitHub</small><b>Tripti352007 ↗</b></a>
+<a class="card rv" target="_blank" rel="noopener" href="https://www.youtube.com/@Finovators_tg07"><small>YouTube</small><b>@Finovators_tg07 ↗</b></a>
+<a class="card rv" target="_blank" rel="noopener" href="https://x.com/TriptiGarg01"><small>X (Twitter)</small><b>@TriptiGarg01 ↗</b></a>
+<a class="card rv" target="_blank" rel="noopener" href="https://www.instagram.com/tripti.techie"><small>Instagram</small><b>@tripti.techie ↗</b></a>
+<div class="card rv"><small>Location</small><b>Mullana, Ambala, Haryana</b></div></div></div>
+<form class="fc card rv" id="f" novalidate><h3>Send a message</h3>
+<label>Your name<input id="nm" type="text" autocomplete="name" placeholder="Jane Doe"></label>
+<label>Your email<input id="em" type="email" autocomplete="email" placeholder="you@example.com"></label>
+<label>Message<textarea id="ms" rows="5" placeholder="Tell me about your idea…"></textarea></label>
+<button class="btn g" type="submit">Send message 🎉</button><div id="st" role="status" aria-live="polite"></div></form>
+</div></div></section></div>
+
+<!-- LEGAL -->
+<div class="pg" id="privacy"><section class="s legal" style="padding-top:140px"><div class="w"><h2>Privacy <em>Policy</em></h2>
+<h3>What I collect</h3><p>This portfolio does not run analytics or store personal data. If you email me, I receive only what you send.</p>
+<h3>How it's used</h3><p>Your email and message are used only to reply to you and are never sold or shared.</p>
+<h3>Contact</h3><p>Questions? Write to gargtripti88@gmail.com.</p></div></section></div>
+<div class="pg" id="terms"><section class="s legal" style="padding-top:140px"><div class="w"><h2>Terms &amp; <em>Conditions</em></h2>
+<h3>Content</h3><p>Everything on Tripti.dev (text, designs, project write-ups) belongs to Tripti Garg unless stated otherwise. Please ask before reusing it.</p>
+<h3>Accuracy</h3><p>Projects are student and learning projects, some of them proposed concepts. They are shown as they are, without guarantees.</p>
+<h3>External links</h3><p>Links to GitHub, LinkedIn, YouTube and project demos lead to third-party sites I don't control.</p></div></section></div>
+</div>
+
+<footer><div class="cols">
+<div><h4>Tripti.dev</h4><p>CSE student and AI-assisted project builder.</p></div>
+<div><h4>Quick links</h4><a href="#home" data-go="home">Home</a><a href="#about" data-go="about">About</a><a href="#projects" data-go="projects">Projects</a><a href="#services" data-go="services">Services</a><a href="#beyond" data-go="beyond">Beyond Technology</a><a href="#contact" data-go="contact">Contact</a><a href="#privacy" data-go="privacy">Privacy Policy</a><a href="#terms" data-go="terms">Terms &amp; Conditions</a></div>
+<div><h4>Contact</h4><a href="mailto:gargtripti88@gmail.com">gargtripti88@gmail.com</a><a target="_blank" href="https://www.linkedin.com/in/tripti-g7/">LinkedIn</a><a target="_blank" href="https://github.com/Tripti352007">GitHub</a><a target="_blank" href="https://www.youtube.com/@Finovators_tg07">YouTube</a><a target="_blank" href="https://x.com/TriptiGarg01">X (Twitter)</a><a target="_blank" href="https://www.instagram.com/tripti.techie">Instagram</a></div>
+<div><h4>Location</h4><p>MM(DU), Mullana, Ambala, Haryana, India</p></div></div>
+<div class="cp">© 2026 Tripti.dev · Owned and managed by Tripti Garg</div></footer>
+
+<script>
+try{if(matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.dataset.theme='light'}catch(_){}
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const IM={"dance":"assets/images/dance.jpg","me":"assets/images/me.jpg","haryatra":"assets/images/haryatra.jpg","sahayta":"assets/images/sahayta.jpg","cravecare":"assets/images/cravecare.jpg","azurequeue-ai":"assets/images/azurequeue-ai.jpg","safora-ai":"assets/images/safora-ai.jpg","yoga":"assets/images/yoga.jpg","nss":"assets/images/nss.png","plant":"assets/images/plant.jpg","team":"assets/images/team.jpg"};
+const IMG=n=>IM[n];
+document.querySelectorAll("[data-k]").forEach(i=>i.src=IM[i.dataset.k]);
+const P=[["Safora AI","Personal safety","An AI-powered personal safety idea.","safora-ai"],["CraveCare","Food discovery","A food discovery experience built around what people crave.","cravecare"],["AzureQueue AI","Bank queue","Smarter bank queue management (earlier version in PHP/MySQL).","azurequeue-ai"],["Sahayta","Volunteering","A platform that connects volunteers with people who need help.","sahayta"],["HarYatra","Public transport","A proposed integrated platform for the Haryana Roadways ecosystem. No seat reservation.","haryatra"]];
+$('#idx').innerHTML=P.map((p,i)=>`<a href="#projects" data-go="projects" data-img="${IMG(p[3])}"><span style="color:var(--gt);margin:0;font:700 1rem 'Space Grotesk'">0${i+1}</span><b>${p[0]}</b><span>${p[1]}</span></a>`).join('');
+$('#pg').innerHTML=P.map((p,i)=>`<div class="card rv"><div class="shot"><img src="${IMG(p[3])}" alt="${p[0]} screenshot" onerror="var q=this.parentNode;this.remove();q.append('${p[0].split(' ').length>1?p[0].split(' ').map(x=>x[0]).join(''):p[0].slice(0,2)}')"></div><div class="num">0${i+1}</div><h3>${p[0]}</h3><p>${p[2]}</p><span class="chip">${p[1]}</span></div>`).join('');
+const W=[["Top 10","Hunt for CSE Einstein hackathon"],["21st rank","Prompt War"],["2nd place","Departmental hackathon"],["2nd place","Universum national inter-university group dance"],["District level","Yoga, plus state-level participation"],["Buildathon","India AI Impact Buildathon (GUVI/HCL) · preparing for Smart India Hackathon"]];
+$('#wg').innerHTML=W.map(w=>`<div class="card rv"><h3 style="color:var(--gt)">${w[0]}</h3><p>${w[1]}</p></div>`).join('');
+$('#mq3').innerHTML="Fast-loading ✦ Responsive on every screen ✦ Clean typography ✦ Purposeful layout ✦ ".repeat(6);
+$('#mq2').innerHTML="Serve ✦ Move ✦ Perform ✦ Collaborate ✦ ".repeat(8);
+$('#mq').innerHTML="AI-Assisted Dev ✦ Problem Solving ✦ C ✦ Java ✦ HTML/CSS ✦ Hackathons ✦ ".repeat(4);
+// reveal + tilt
+const io=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('on')),{threshold:.12});
+const io2=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting&&!x.target._d){x.target._d=1;const el=x.target,n=+el.dataset.n,t0=performance.now();(function u(t){const k=Math.min(1,(t-t0)/1100);el.textContent=Math.round(n*(1-Math.pow(1-k,3)));if(k<1)requestAnimationFrame(u)})(t0)}}),{threshold:.5});
+function hook(){$$('.cnt').forEach(e=>io2.observe(e));$$('.rv').forEach(e=>io.observe(e));$$('.card').forEach(c=>{if(c._t)return;c._t=1;c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;c.style.transform=`rotateY(${(x-.5)*16}deg) rotateX(${(.5-y)*16}deg) translateZ(8px)`;c.style.setProperty('--x',x*100+'%');c.style.setProperty('--y',y*100+'%')});c.addEventListener('mouseleave',()=>c.style.transform='')})}
+hook();
+addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#menu').classList.contains('on'))$('#mb').click()});
+// theme + menu
+$('#th').onclick=()=>{const d=document.documentElement;d.dataset.theme=d.dataset.theme==='dark'?'light':'dark'};
+$('#mb').onclick=()=>{$('#menu').classList.toggle('on');$('#mb').textContent=$('#menu').classList.contains('on')?'Close':'Menu'};
+// Strava-style completion transition between pages
+let busy=0;
+function go(id,x,y){if(busy||!$('#'+id))return;if($('#'+id).classList.contains('on')){$('#menu').classList.remove('on');$('#mb').textContent='Menu';scrollTo({top:0,behavior:'smooth'});return}busy=1;const t=$('#tr'),k=t.querySelector('path'),s=t.querySelector('svg');
+t.style.transition='none';t.style.left=x-30+'px';t.style.top=y-30+'px';t.style.transform='scale(0)';t.offsetWidth;
+t.style.transition='transform .6s cubic-bezier(.7,0,.3,1)';t.style.transform=`scale(${Math.max(innerWidth,innerHeight)/20})`;
+s.style.transition='opacity .2s .5s';s.style.opacity=1;k.style.transition='stroke-dashoffset .45s .55s';k.style.strokeDashoffset=0;
+setTimeout(()=>{$$('.pg').forEach(p=>p.classList.toggle('on',p.id===id));$('#menu').classList.remove('on');$('#mb').textContent='Menu';scrollTo(0,0);hook();history.replaceState(0,'','#'+id);morph=0;
+t.style.transform='scale(0)';s.style.opacity=0;k.style.transition='none';k.style.strokeDashoffset=60;setTimeout(()=>busy=0,550)},950)}
+document.addEventListener('click',e=>{const a=e.target.closest('[data-go]');if(a){e.preventDefault();go(a.dataset.go,e.clientX,e.clientY)}});
+if(location.hash&&$(location.hash))$$('.pg').forEach(p=>p.classList.toggle('on','#'+p.id===location.hash));
+// 3D particle shape
+const cv=$('#gl'),g=cv.getContext('2d');let W_,H_,N=innerWidth<800?1100:2200,pts=[],tg=[],shape=0,morph=0,ang=0,vel=.004,tilt=0,ty=0,mx=0,my=0,lastY=scrollY;
+function rs(){W_=cv.width=innerWidth;H_=cv.height=innerHeight}rs();addEventListener('resize',rs);
+const S={
+sphere:i=>{const k=(i+.5)/N,p=Math.acos(1-2*k),t=Math.PI*(1+Math.sqrt(5))*i;return[Math.sin(p)*Math.cos(t),Math.cos(p),Math.sin(p)*Math.sin(t)]},
+torus:i=>{const u=i/N*Math.PI*2*38,v=i/N*Math.PI*2,R=.78,r=.34;return[(R+r*Math.cos(u))*Math.cos(v),r*Math.sin(u),(R+r*Math.cos(u))*Math.sin(v)]},
+cube:i=>{const a=[Math.random()*2-1,Math.random()*2-1,Math.random()*2-1],f=i%3;a[f]=(i%2?1:-1);return a.map(x=>x*.82)},
+helix:i=>{const t=i/N*Math.PI*10,s=i%2?1:-1;return[Math.cos(t+(s>0?0:Math.PI))*.55,(i/N)*2.2-1.1,Math.sin(t+(s>0?0:Math.PI))*.55]}};
+const ORDER=['sphere','torus','cube','helix'];
+for(let i=0;i<N;i++)pts.push({x:(Math.random()-.5)*4,y:(Math.random()-.5)*4,z:(Math.random()-.5)*4,c:Math.random()});
+function setShape(n){shape=n;for(let i=0;i<N;i++)tg[i]=S[ORDER[n]](i)}setShape(0);
+addEventListener('mousemove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5});
+addEventListener('scroll',()=>{const d=scrollY-lastY;lastY=scrollY;vel=Math.max(-.12,Math.min(.12,vel+d*.0009));ty+=d*.0015;
+const pr=scrollY/Math.max(1,document.body.scrollHeight-innerHeight),n=Math.min(3,Math.floor(pr*4));if(n!==shape)setShape(n)});
+function frame(){g.clearRect(0,0,W_,H_);vel+=((vel>0?.004:-.004)-vel)*.04;ang+=vel;tilt+=(ty-tilt)*.06;
+const home=$('#home').classList.contains('on'),cx=home&&innerWidth>800?W_*.74:W_*.5,sc=Math.min(W_,H_)*(home?(innerWidth>800?.33:.3):.3),al=home?Math.max(.45,1-scrollY/900):(document.documentElement.dataset.theme==='light'?.45:.35);
+const ca=Math.cos(ang+mx*1.2),sa=Math.sin(ang+mx*1.2),cb=Math.cos(tilt+my),sb=Math.sin(tilt+my),gold=document.documentElement.dataset.theme==='dark'?[255,200,61]:[216,140,0],vi=document.documentElement.dataset.theme==='dark'?[139,123,255]:[75,59,224],mi=document.documentElement.dataset.theme==='dark'?[94,234,212]:[12,143,127];
+const cyy=home&&innerWidth<=800?H_*.87:H_*.5;morph=Math.min(1,morph+.006);const sp=.035+(1-morph)*.01;
+for(let i=0;i<N;i++){const p=pts[i],t=tg[i];p.x+=(t[0]-p.x)*sp;p.y+=(t[1]-p.y)*sp;p.z+=(t[2]-p.z)*sp;
+let x=p.x*ca+p.z*sa,z=-p.x*sa+p.z*ca,y=p.y*cb-z*sb;z=p.y*sb+z*cb;
+const f=2.6/(2.6+z),px=cx+x*sc*f,py=cyy+y*sc*f,d=(z+1.2)/2.4,c=p.c<.5?gold:p.c<.8?vi:mi;
+g.fillStyle=`rgba(${c[0]},${c[1]},${c[2]},${(.35+.65*(1-d))*al})`;g.fillRect(px,py,1.2+f*1.6,1.2+f*1.6)}
+requestAnimationFrame(frame)}frame();
+// confetti
+const cc=$('#cf'),cx2=cc.getContext('2d');let cp=[];cc.width=innerWidth;cc.height=innerHeight;
+function boom(x,y){const col=['#ffc83d','#8b7bff','#5eead4','#ff7a59','#f7f3e8'];for(let i=0;i<140;i++){const a=Math.random()*6.28,s=Math.random()*13+4;cp.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-7,w:Math.random()*11+5,h:Math.random()*6+3,r:0,vr:(Math.random()-.5)*.4,c:col[i%5],l:1,o:i%3==0,st:i%7==0})}}
+(function cl(){cx2.clearRect(0,0,cc.width,cc.height);cp=cp.filter(p=>p.l>0);cp.forEach(p=>{p.vy+=.32;p.vx*=.98;p.x+=p.vx;p.y+=p.vy;p.r+=p.vr;p.l-=.009;cx2.save();cx2.globalAlpha=Math.max(p.l,0);cx2.translate(p.x,p.y);cx2.rotate(p.r);cx2.fillStyle=cx2.strokeStyle=p.c;cx2.lineWidth=2;if(p.o){cx2.beginPath();cx2.arc(0,0,p.h+1,0,7);cx2.stroke()}else if(p.st){cx2.font='16px sans-serif';cx2.fillText('✦',-6,6)}else cx2.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx2.restore()});requestAnimationFrame(cl)})();
+$('#f').onsubmit=async e=>{e.preventDefault();const n=$('#nm'),m=$('#em'),t=$('#ms'),st=$('#st'),btn=e.target.querySelector('button[type=submit]');[n,m,t].forEach(x=>x.classList.remove('bad'));st.className='';st.textContent='';
+const ok=/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(m.value.trim());if(!n.value.trim())n.classList.add('bad');if(!ok)m.classList.add('bad');if(!t.value.trim())t.classList.add('bad');
+if(!n.value.trim()||!ok||!t.value.trim()){st.className='err';st.textContent='Please fill in your name, a valid email and a message.';return}
+const nm=n.value.trim(),em=m.value.trim(),ms=t.value.trim(),lbl=btn.textContent;btn.disabled=true;btn.textContent='Sending…';
+try{const r=await fetch('https://formsubmit.co/ajax/gargtripti88@gmail.com',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({name:nm,email:em,message:ms,_subject:'New message from Tripti.dev — '+nm,_replyto:em,_captcha:'false',_template:'table'})});
+const j=await r.json().catch(()=>({}));if(!r.ok||j.success===false||j.success==='false')throw new Error('fail');
+const b=btn.getBoundingClientRect();boom(b.left+b.width/2,b.top);boom(innerWidth*.3,innerHeight*.5);boom(innerWidth*.7,innerHeight*.5);
+st.className='ok';st.textContent='Thank you, '+nm+'! Your message is on its way to my inbox.';e.target.reset()}
+catch(_){st.className='err';st.textContent='';
+const a=document.createElement('a');a.href='mailto:gargtripti88@gmail.com?subject='+encodeURIComponent('Hello from '+nm)+'&body='+encodeURIComponent(ms+'\n\n— '+nm+' ('+em+')');a.target='_blank';a.rel='noopener';a.textContent='open email app';a.style.textDecoration='underline';
+const c=document.createElement('button');c.type='button';c.textContent='copy your message';c.style.cssText='background:none;border:0;color:inherit;font:inherit;text-decoration:underline;cursor:pointer;padding:0';
+c.onclick=()=>{try{navigator.clipboard.writeText('To: gargtripti88@gmail.com\n\n'+ms+'\n\n— '+nm+' ('+em+')').then(()=>c.textContent='copied ✓').catch(()=>{})}catch(_){}};
+const g=document.createElement('a');g.href='https://mail.google.com/mail/?view=cm&fs=1&to=gargtripti88@gmail.com&su='+encodeURIComponent('Hello from '+nm)+'&body='+encodeURIComponent(ms+'\n\n— '+nm+' ('+em+')');g.target='_blank';g.rel='noopener';g.textContent='Open in Gmail';g.style.cssText='text-decoration:underline;font-weight:700';
+st.append("Couldn't send directly from here. ",g,' (pre-filled, just press Send), or ',a,' / ',c,'.')}
+finally{btn.disabled=false;btn.textContent=lbl}};
+$('#cpy').onclick=e=>{try{navigator.clipboard.writeText('gargtripti88@gmail.com').catch(()=>{})}catch(_){}boom(e.clientX,e.clientY);e.target.textContent='Copied ✓';setTimeout(()=>e.target.textContent='Copy email',2000)};
+const pv=$('#pv');document.addEventListener('mouseover',e=>{const a=e.target.closest('.idx a');if(a){pv.style.backgroundImage=`url(${a.dataset.img})`;pv.classList.add('on')}else pv.classList.remove('on')});
+document.addEventListener('mousemove',e=>{pv.style.left=e.clientX+24+'px';pv.style.top=e.clientY-90+'px'});
+addEventListener('resize',()=>{cc.width=innerWidth;cc.height=innerHeight});
+</script></body></html>
